@@ -1,8 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using static GarageApplication.Program.Car;
-
-namespace GarageApplication
+﻿namespace GarageApplication
 {
     internal class Program
     {
@@ -32,7 +28,6 @@ namespace GarageApplication
                 {
                     case '1':
                         Console.Clear();
-                        Console.WriteLine("User wants to PARK");
                         var parkVehicle = new ParkVehicle();
                         parkVehicle.InitParking();
                         
@@ -61,23 +56,39 @@ namespace GarageApplication
                 }
             }
         }
+
+
         public class ParkVehicle()
         {
-            internal void InitParking()
+            public void InitParking()
             {
+                Console.WriteLine("How many lots do you want in your garage?");
+                int numofLotsInput = int.Parse(Console.ReadLine()!);
+                var garage = new Garage<Vehicle>(numofLotsInput);
                 // Ask user what type of vehicle to park
-                // Ask for all info like regnum, color, numOfWheels
-                Console.WriteLine("We are initialice parking");
+                // Ask for all info ike regnum, color, numOfWheels
 
             }
-
-
         }
-        //Todo 
-        public class Garage<T>()
+        internal class Garage<T> where T : Vehicle
         {
+            private T[] _vehicles;
+            public int NumOfParkingLots { get; set; }
+
+            public Garage(int numOfParkingLots)
+            {
+
+                if(numOfParkingLots < 1)
+                {
+                    throw new ArgumentException("Number of parking lots must be at least 1");
+                }
+                _vehicles = new T[numOfParkingLots];
+                Console.WriteLine($"Yoy now have a garage with {numOfParkingLots} lots!");
+            }
 
         }
+
+        #region class, subclass Vehicle
         public class Vehicle
         {
             //Todo make read-only, porivate
@@ -103,6 +114,7 @@ namespace GarageApplication
                 NumOfEngines = numOfEngines;
             } 
         } 
+
         public class Motorcycl : Vehicle
         {
             public int CylinderVolume { get; set; }
@@ -122,7 +134,6 @@ namespace GarageApplication
             {
                 Fuel = fuel;
             }
-
         }
 
         public class Bus : Vehicle 
@@ -144,5 +155,6 @@ namespace GarageApplication
                 Length = length;
             }
         }
+        #endregion
     }
 }
