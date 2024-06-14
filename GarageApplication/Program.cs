@@ -1,5 +1,6 @@
 ﻿using GarageApplication.Classes.Baseclass;
 using GarageApplication.Classes.Subclass;
+using GarageApplication.Handlers;
 
 namespace GarageApplication
 {
@@ -7,6 +8,11 @@ namespace GarageApplication
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("How many lots do you want in your garage?");
+            int numofLotsInput = int.Parse(Console.ReadLine()!);
+
+            var garageHandler = new GarageHandler(numofLotsInput);
+
             bool isContinue = true;
             while (isContinue)
             {
@@ -31,9 +37,7 @@ namespace GarageApplication
                 {
                     case '1':
                         Console.Clear();
-                        var parkVehicle = new ParkVehicle();
-                        parkVehicle.InitParking();
-                        
+                        ParkVehicle(garageHandler);
                         break;
                     case '2':
                         Console.Clear();
@@ -58,22 +62,9 @@ namespace GarageApplication
         }
 
 
-        public class ParkVehicle()
+        static void ParkVehicle(GarageHandler garageHandler)
         {
-            public void InitParking()
-            {
-                Console.WriteLine("How many lots do you want in your garage?");
-                int numofLotsInput = int.Parse(Console.ReadLine()!);
-                var garage = new Garage<Vehicle>(numofLotsInput);
-                Vehicle vehicle = new Vehicle("wer234", "white", 4);
-                Car car = new Car("wer234", "white", 4, Car.FuelType.Gasoline);
-                Boat boat = new Boat("wer234", "white", 4, 5);
-                Airplane airplane = new Airplane("wer234", "white", 4, 2);
-                Motorcycle motorcycle = new Motorcycle("wer234", "white", 2, 250);
-
-                // Ask user what type of vehicle to park
-                // Ask for all info ike regnum, color, numOfWheels
-            }
+            Console.WriteLine($"garageHandler: {garageHandler}");
         }
        
     }
