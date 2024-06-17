@@ -30,5 +30,19 @@ namespace GarageApplication.Classes.Baseclass
             _vehicles[NumOfParkingLots++] = vehicle;
             return true; // Vehicle Parked
         }
+
+        public bool Remove(string regNum) 
+        {
+            for (int i = 0; i < NumOfParkingLots; i++)
+            {
+                if (_vehicles[i].RegNum == regNum)
+                {
+                    // Vehicle found
+                    Console.WriteLine("Found it, need to remove");
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -43,6 +43,7 @@ namespace GarageApplication
                         break;
                     case '2':
                         Console.Clear();
+                        RemoveVehicle(garageHandler);
                         Console.WriteLine("User wants to Get parked vehicle");
                         break;
                     case '3':
@@ -163,5 +164,19 @@ namespace GarageApplication
             }
         }
        
+        static void RemoveVehicle(GarageHandler garageHandler)
+        {
+            Console.Write("Enter register number on vehicle to remove: ");
+            string regNum = Console.ReadLine()!;
+
+            if(garageHandler.RemoveVehicle(regNum))
+            {
+                Console.WriteLine("Vehicle removed");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found");
+            }
+        }
     }
 }

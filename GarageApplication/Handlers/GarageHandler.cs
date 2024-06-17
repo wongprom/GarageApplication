@@ -20,5 +20,9 @@ namespace GarageApplication.Handlers
         {
             return _garage.Park(vehicle);
         }
+        public bool RemoveVehicle(string regNum)
+        {
+            return _garage.Remove(regNum);
+        }
     }
 }
