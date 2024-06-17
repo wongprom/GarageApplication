@@ -10,7 +10,7 @@ namespace GarageApplication.Classes.Subclass
 {
     internal class Car : Vehicle
     {
-        public enum FuelType { Gasoline, Diesel }
+        public enum FuelType { Gasoline = 1, Diesel }
         public FuelType Fuel { get; set; }
 
         public Car(string regNum, string color, int numOfWheels, FuelType fuel) : base(regNum, color, numOfWheels)
