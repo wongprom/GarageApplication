@@ -20,5 +20,15 @@ namespace GarageApplication.Classes.Baseclass
             _vehicles = new T[numOfParkingLots];
             Console.WriteLine($"Yoy now have a garage with {numOfParkingLots} lots!");
         }
+
+        public bool Park(T vehicle)
+        {
+            if (NumOfParkingLots >= _vehicles.Length)
+            {
+                return false; // garage is full
+            }
+            _vehicles[NumOfParkingLots++] = vehicle;
+            return true; // Vehicle Parked
+        }
     }
 }

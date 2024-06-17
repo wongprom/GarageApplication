@@ -152,8 +152,15 @@ namespace GarageApplication
                     Console.ResetColor();
                     break;
             }
-            Console.WriteLine($"garageHandler: {garageHandler}");
-            Console.WriteLine($"vehicle: {vehicle.RegNum}");
+
+            if (garageHandler.ParkVehicle(vehicle))
+            {
+                Console.WriteLine("Vehicle parked");
+            }
+            else
+            {
+                Console.WriteLine("Garage full!");
+            }
         }
        
     }

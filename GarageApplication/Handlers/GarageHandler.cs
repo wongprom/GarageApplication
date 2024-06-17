@@ -15,5 +15,10 @@ namespace GarageApplication.Handlers
         {
             _garage = new Garage<Vehicle>(numOfLotsInput);
         }
+
+        public bool ParkVehicle(Vehicle vehicle)
+        {
+            return _garage.Park(vehicle);
+        }
     }
 }
