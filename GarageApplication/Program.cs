@@ -118,7 +118,10 @@ namespace GarageApplication
                     vehicle = new Motorcycle(regNumber, color, numOfWheels, cylinderVolume);
                     break;
                 case '3':
-                  
+                    //Todo validate input, only numbers
+                    Console.WriteLine("Enter number of engines: ");
+                    int numOfEngines = int.Parse(Console.ReadLine()!);
+                    vehicle = new Airplane(regNumber, color, numOfWheels, numOfEngines);
                     break;
                 case '4':
                    
