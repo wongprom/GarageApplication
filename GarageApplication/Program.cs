@@ -66,23 +66,33 @@ namespace GarageApplication
 
         static void ParkVehicle(GarageHandler garageHandler)
         {
-            Console.WriteLine("What type of vehacle do you want to park?  \n(1, 2, 3, 0) of your choice"
-                       + "\n1. Car"
-                       + "\n2. Motorcycle"
-                       + "\n3. Airplane"
-                       + "\n4. Bus"
-                       + "\n5. Boat");
-            char input = ' ';
-            try
+            bool noVehicle = true;
+            char inputVehicle = ' ';
+            while (noVehicle)
             {
-                input = Console.ReadLine()![0];
-            }
-            catch (IndexOutOfRangeException)
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please enter some input!");
-                Console.ResetColor();
+                Console.WriteLine("What type of vehicle do you want to park?"
+                           + "\n1. Car"
+                           + "\n2. Motorcycle"
+                           + "\n3. Airplane"
+                           + "\n4. Bus"
+                           + "\n5. Boat");
+                
+                inputVehicle = Console.ReadLine()![0];
+                int convertInputVehicle = inputVehicle - '0';
+
+                if (convertInputVehicle > 0 && convertInputVehicle < 6)
+                {
+                    noVehicle = false;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Please enter valid input!");
+                    Console.ResetColor();
+                }
+                
+                
             }
 
             // Todo Validate input regNumber
@@ -99,7 +109,7 @@ namespace GarageApplication
 
             
 
-            switch (input)
+            switch (inputVehicle)
             {
                 case '1':
                     Console.WriteLine("Enter type of fuel for your car: "
