@@ -48,7 +48,7 @@ namespace GarageApplication
                         break;
                     case '3':
                         Console.Clear();
-                        Console.WriteLine("User wants to Get Info about Vehicles");
+                        ListVehicles(garageHandler);
                         break;
                     case '0':
                         Console.Clear();
@@ -176,6 +176,15 @@ namespace GarageApplication
             else
             {
                 Console.WriteLine("Vehicle not found");
+            }
+        }
+
+        static void ListVehicles(GarageHandler garageHandler)
+        {
+            Console.WriteLine("Vehicles in garage: ");
+            foreach (var vehicle in garageHandler.ListVehicles())
+            {
+                Console.WriteLine($"{vehicle.GetType().Name} - {vehicle.RegNum}");
             }
         }
     }

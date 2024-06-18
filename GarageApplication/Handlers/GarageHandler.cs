@@ -24,5 +24,10 @@ namespace GarageApplication.Handlers
         {
             return _garage.Remove(regNum);
         }
+
+        public IEnumerable<Vehicle> ListVehicles()
+        { 
+            return _garage;
+        }
     }
 }

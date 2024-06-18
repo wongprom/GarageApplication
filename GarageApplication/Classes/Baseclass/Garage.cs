@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GarageApplication.Classes.Baseclass
 {
-    internal class Garage<T> where T : Vehicle
+    internal class Garage<T> : IEnumerable<T>  where T : Vehicle
     {
         private T[] _vehicles;
         public int NumOfParkingLots { get; set; }
@@ -43,6 +44,20 @@ namespace GarageApplication.Classes.Baseclass
                 }
             }
             return false;
+        }
+
+       
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var vehicle in _vehicles)
+            {
+                yield return vehicle;
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
