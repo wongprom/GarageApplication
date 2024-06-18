@@ -29,5 +29,24 @@ namespace GarageApplication.Handlers
         { 
             return _garage;
         }
+
+        public Dictionary<string, int> ListVehicleType()
+        {
+            Dictionary<string, int> vehicleTypes = new Dictionary<string, int>();
+
+            foreach (Vehicle vehicle in _garage)
+            {
+                var vehicleType = vehicle.GetType().Name;
+                if (vehicleTypes.ContainsKey(vehicleType))
+                {
+                    vehicleTypes[vehicleType]++;
+                }
+                else
+                {
+                    vehicleTypes[vehicleType] = 1;
+                }
+            }
+            return vehicleTypes;
+        }
     }
 }

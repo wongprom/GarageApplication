@@ -18,10 +18,11 @@ namespace GarageApplication
             bool isContinue = true;
             while (isContinue)
             {
-                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 4, 0) of your choice"
                         + "\n1. Park Vehicle"
                         + "\n2. Remove Vehicle"
                         + "\n3. Info Vehicles"
+                        + "\n4. List Vehicles Type"
                         + "\n0. Exit the application");
                 char input = ' ';
                 try
@@ -48,6 +49,10 @@ namespace GarageApplication
                     case '3':
                         Console.Clear();
                         ListVehicles(garageHandler);
+                        break;
+                    case '4':
+                        Console.Clear();
+                        ListVehiclesType(garageHandler);
                         break;
                     case '0':
                         Console.Clear();
@@ -184,6 +189,17 @@ namespace GarageApplication
             foreach (var vehicle in garageHandler.ListVehicles())
             {
                 Console.WriteLine($"{vehicle.GetType().Name} - {vehicle.RegNum}");
+            }
+            Console.WriteLine();
+        }
+
+        static void ListVehiclesType(GarageHandler garageHandler)
+        {
+            Console.Clear();
+            Console.WriteLine("Vehicles Type and count in garage: ");
+            foreach (var vehicle in garageHandler.ListVehicleType())
+            {
+                Console.WriteLine($"Type: {vehicle.Key} - Count: {vehicle.Value}");
             }
             Console.WriteLine();
         }
