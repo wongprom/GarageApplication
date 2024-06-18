@@ -46,6 +46,17 @@ namespace GarageApplication.Classes.Baseclass
             return false;
         }
 
+        public Vehicle? GetVehicleByRegNum(string regNum)
+        {
+            foreach (var vehicle in _vehicles)
+            {
+                if(vehicle?.RegNum.ToLower() == regNum.ToLower())
+                {
+                    return vehicle;
+                }
+            }
+            return null;
+        }
        
 
         public IEnumerator<T> GetEnumerator()

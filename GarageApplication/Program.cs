@@ -23,6 +23,7 @@ namespace GarageApplication
                         + "\n2. Remove Vehicle"
                         + "\n3. Info Vehicles"
                         + "\n4. List Vehicles Type"
+                        + "\n5. Get vehicle by register number"
                         + "\n0. Exit the application");
                 char input = ' ';
                 try
@@ -53,6 +54,10 @@ namespace GarageApplication
                     case '4':
                         Console.Clear();
                         ListVehiclesType(garageHandler);
+                        break;
+                    case '5':
+                        Console.Clear();
+                        GetVehicleByRegNum(garageHandler);
                         break;
                     case '0':
                         Console.Clear();
@@ -202,6 +207,23 @@ namespace GarageApplication
                 Console.WriteLine($"Type: {vehicle.Key} - Count: {vehicle.Value}");
             }
             Console.WriteLine();
+        }
+        static void GetVehicleByRegNum(GarageHandler garageHandler)
+        {
+            Console.Write("Enter register number on vehicle to get: ");
+            string regNum = Console.ReadLine()!;
+
+            var vehicle = garageHandler.GetVehicleByRegNum(regNum);
+
+            if(vehicle != null)
+            {
+                Console.WriteLine($"{vehicle.GetType().Name} - {vehicle.RegNum}");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle not found");
+            }
+
         }
     }
 }

@@ -48,5 +48,11 @@ namespace GarageApplication.Handlers
             }
             return vehicleTypes;
         }
+
+        public Vehicle? GetVehicleByRegNum(string regNum) 
+        {
+            return _garage.GetVehicleByRegNum(regNum);
+        }
+
     }
 }
