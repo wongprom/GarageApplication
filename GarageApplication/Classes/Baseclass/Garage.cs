@@ -9,7 +9,7 @@ namespace GarageApplication.Classes.Baseclass
 {
     internal class Garage<T> : IEnumerable<T>  where T : Vehicle
     {
-        private T[] _vehicles;
+        private T?[] _vehicles;
         public int NumOfParkingLots { get; set; }
 
         public Garage(int numOfParkingLots)
@@ -36,10 +36,10 @@ namespace GarageApplication.Classes.Baseclass
         {
             for (int i = 0; i < NumOfParkingLots; i++)
             {
-                if (_vehicles[i].RegNum == regNum)
+                if (_vehicles?[i]!.RegNum == regNum)
                 {
-                    // Vehicle found
-                    Console.WriteLine("Found it, need to remove");
+                    _vehicles[i] = _vehicles[--NumOfParkingLots];
+                    _vehicles[NumOfParkingLots] = null;
                     return true;
                 }
             }
@@ -52,7 +52,10 @@ namespace GarageApplication.Classes.Baseclass
         {
             foreach (var vehicle in _vehicles)
             {
-                yield return vehicle;
+                if(vehicle != null)
+                {
+                    yield return vehicle;
+                }
             }
         }
         IEnumerator IEnumerable.GetEnumerator()
