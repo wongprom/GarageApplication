@@ -14,9 +14,9 @@ namespace GarageApplication.Classes.Baseclass
 
         public Garage(int numOfParkingLots)
         {
-            if (numOfParkingLots < 1)
+            if (numOfParkingLots < 4)
             {
-                throw new ArgumentException("Number of parking lots must be at least 1");
+                throw new ArgumentException("Number of parking lots must be at least 4");
             }
             _vehicles = new T[numOfParkingLots];
             Console.WriteLine($"You now have a garage with {numOfParkingLots} lots!");

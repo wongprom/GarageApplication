@@ -1,7 +1,9 @@
 ﻿using GarageApplication.Classes.Baseclass;
 using GarageApplication.Classes.Subclass;
 using GarageApplication.Handlers;
+using System.Drawing;
 using System.Numerics;
+using System.Security.Cryptography;
 using static GarageApplication.Classes.Subclass.Car;
 
 namespace GarageApplication
@@ -10,7 +12,7 @@ namespace GarageApplication
     {
         static void Main(string[] args)
         {
-            Console.Write("How many lots do you want in your garage?: ");
+            Console.Write("How many lots do you want in your garage? (Minimum 4 lots): ");
             int numofLotsInput = int.Parse(Console.ReadLine()!);
 
             var garageHandler = new GarageHandler(numofLotsInput);
@@ -24,6 +26,7 @@ namespace GarageApplication
                         + "\n3. Info Vehicles"
                         + "\n4. List Vehicles Type"
                         + "\n5. Get vehicle by register number"
+                        + "\n6. init Populate garage with 2 Cars, 1 Motorcycle, 1 Boat. WARNING! Will replace existing vehicles"
                         + "\n0. Exit the application");
                 char input = ' ';
                 try
@@ -58,6 +61,22 @@ namespace GarageApplication
                     case '5':
                         Console.Clear();
                         GetVehicleByRegNum(garageHandler);
+                        break;
+                    case '6':
+                        Console.Clear();
+                        List<Vehicle> inintVehicles = new List<Vehicle>
+                        {
+                            new Car(regNum:"car001", color:"Red", numOfWheels:4, FuelType.Gasoline),
+                            new Car(regNum:"car002", color:"Green", numOfWheels:4, FuelType.Diesel),
+                            new Motorcycle(regNum:"mot001", color:"Black", numOfWheels:2, 250),
+                            new Boat(regNum:"boa001", color:"Green", numOfWheels:0, 190),
+                        };
+                        foreach (Vehicle vehicle in inintVehicles)
+                        {
+                            //Todo make sure that garage is not full when case 6 used several times
+                            garageHandler.ParkVehicle(vehicle);
+                        }
+                        ListVehicles(garageHandler);
                         break;
                     case '0':
                         Console.Clear();
