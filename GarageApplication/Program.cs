@@ -10,7 +10,7 @@ namespace GarageApplication
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("How many lots do you want in your garage?");
+            Console.Write("How many lots do you want in your garage?: ");
             int numofLotsInput = int.Parse(Console.ReadLine()!);
 
             var garageHandler = new GarageHandler(numofLotsInput);
@@ -18,10 +18,10 @@ namespace GarageApplication
             bool isContinue = true;
             while (isContinue)
             {
-                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 0) of your choice"
                         + "\n1. Park Vehicle"
-                        + "\n2. Get Vehicle"
-                        + "\n3. Info about all Vehicles"
+                        + "\n2. Remove Vehicle"
+                        + "\n3. Info Vehicles"
                         + "\n0. Exit the application");
                 char input = ' ';
                 try
@@ -44,7 +44,6 @@ namespace GarageApplication
                     case '2':
                         Console.Clear();
                         RemoveVehicle(garageHandler);
-                        Console.WriteLine("User wants to Get parked vehicle");
                         break;
                     case '3':
                         Console.Clear();
@@ -186,6 +185,7 @@ namespace GarageApplication
             {
                 Console.WriteLine($"{vehicle.GetType().Name} - {vehicle.RegNum}");
             }
+            Console.WriteLine();
         }
     }
 }

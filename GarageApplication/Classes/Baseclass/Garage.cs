@@ -19,7 +19,7 @@ namespace GarageApplication.Classes.Baseclass
                 throw new ArgumentException("Number of parking lots must be at least 1");
             }
             _vehicles = new T[numOfParkingLots];
-            Console.WriteLine($"Yoy now have a garage with {numOfParkingLots} lots!");
+            Console.WriteLine($"You now have a garage with {numOfParkingLots} lots!");
         }
 
         public bool Park(T vehicle)
