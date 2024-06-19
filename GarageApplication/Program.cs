@@ -73,7 +73,6 @@ namespace GarageApplication
                         };
                         foreach (Vehicle vehicle in inintVehicles)
                         {
-                            //Todo make sure that garage is not full when case 6 used several times
                             garageHandler.ParkVehicle(vehicle);
                         }
                         ListVehicles(garageHandler);
