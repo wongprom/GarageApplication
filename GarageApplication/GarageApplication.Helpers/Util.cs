@@ -67,5 +67,46 @@ namespace GarageApplication.GarageApplication.Helpers
 
             } while (true);
         }
+
+        public static string AskForRegNum(string prompt)
+        { 
+            string answer;
+
+            while (true) 
+            {
+                answer = AskForString(prompt);
+
+                if(answer.Length != 6)
+                {
+                    Console.WriteLine("Invalid input: Registration number must be exactly 6 characters long.");
+                    continue;
+;               }
+                
+                if(answer.Length != 6)
+                {
+                    Console.WriteLine("Less then 6 char");
+                   continue;
+;               }
+
+                string letters = answer.Substring(0, 3);
+                string digits = answer.Substring(3);
+
+                if (!letters.All(char.IsLetter))
+                {
+                    Console.WriteLine("Invalid input: First 3 characters must be letters.");
+                    continue;
+                }
+
+                
+                if (!digits.All(char.IsDigit))
+                {
+                    Console.WriteLine("Invalid input: Last 3 characters must be digits.");
+                    continue;
+                }
+                return answer;
+
+            }
+
+        }
     }
 }

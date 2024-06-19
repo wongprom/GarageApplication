@@ -135,14 +135,10 @@ namespace GarageApplication
                     Console.WriteLine("Please enter valid input!");
                     Console.ResetColor();
                 }
-                
-                
             }
 
-            // Todo Validate input regNumber
-            Console.Write("Enter registration number, ex abc123: ");
-            string regNumber = Console.ReadLine()!;
-            
+            string regNumber = Util.AskForRegNum("Enter registration number, ex abc123:");
+
             Console.Write("Enter color: ");
             string color = Console.ReadLine()!;
             
