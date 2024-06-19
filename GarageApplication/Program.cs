@@ -140,9 +140,8 @@ namespace GarageApplication
             string regNumber = Util.AskForRegNum("Enter registration number, ex abc123:");
 
             string color = Util.AskForLettersOnly("Enter color:");
-            
-            Console.Write("Enter number of wheels: ");
-            int numOfWheels = int.Parse(Console.ReadLine()!);
+
+            uint numOfWheels = Util.AskForUInt("Enter number of wheels:");
 
             Vehicle vehicle = new Vehicle();
 

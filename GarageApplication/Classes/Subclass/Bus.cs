@@ -12,7 +12,7 @@ namespace GarageApplication.Classes.Subclass
     {
         public int NumOfSeats { get; set; }
 
-        public Bus(string regNum, string color, int numOfWheels, int numOfSeats) : base(regNum, color, numOfWheels)
+        public Bus(string regNum, string color, uint numOfWheels, int numOfSeats) : base(regNum, color, numOfWheels)
         {
             NumOfSeats = numOfSeats;
         }

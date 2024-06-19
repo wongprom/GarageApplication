@@ -12,7 +12,7 @@ namespace GarageApplication.Classes.Subclass
     {
         public double Length { get; set; }
 
-        public Boat(string regNum, string color, int numOfWheels, double length) : base(regNum, color, numOfWheels)
+        public Boat(string regNum, string color, uint numOfWheels, double length) : base(regNum, color, numOfWheels)
         {
             Length = length;
         }
