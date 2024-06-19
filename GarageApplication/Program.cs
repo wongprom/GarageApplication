@@ -171,11 +171,8 @@ namespace GarageApplication
                     vehicle = new Bus(regNumber, color, numOfWheels, numOfSeats);
                     break; 
                 case '5':
-                    //Todo validate input, only numbers
-                    Console.WriteLine("Enter boat length: ");
-                    int length = int.Parse(Console.ReadLine()!);
+                    double length = Util.AskForDouble("Enter boat length:");
                     vehicle = new Boat(regNumber, color, numOfWheels, length);
-
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;

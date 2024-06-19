@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -145,6 +146,39 @@ namespace GarageApplication.GarageApplication.Helpers
                 }
             }
 
+        }
+
+        public static double AskForDouble(string prompt)
+        {
+            
+            bool isValid = false;
+            string answer;
+            double result = 0;
+            do
+            {
+                answer = AskForString(prompt);
+
+                if (answer.Any(char.IsLetter))
+                {
+                    Console.WriteLine("Your input is not valid, it contains letters.");
+                }
+                else
+                {
+                    answer = answer.Replace('.', ',');
+
+                    if (double.TryParse(answer, out result))
+                    {
+                        isValid = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your input is not a valid double.");
+                    }
+                }
+            } while (!isValid);
+
+            return result;
+            
         }
     }
 }
