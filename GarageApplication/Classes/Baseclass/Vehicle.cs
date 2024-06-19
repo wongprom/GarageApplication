@@ -8,16 +8,19 @@ namespace GarageApplication.Classes.Baseclass
 {
     public class Vehicle
     {
-        //Todo make read-only, porivate
-        public string RegNum { get; set; }
-        public string Color { get; set; }
-        public uint NumOfWheels { get; set; }
+        public readonly string? RegNum;
+        private readonly string? _color;
+        private readonly uint _numOfWheels;
 
-        public Vehicle(string regNum = "abc123", string color = "white", uint numOfWheels = 4)
+        public Vehicle(string regNum, string color, uint numOfWheels)
         {
             RegNum = regNum;
-            Color = color;
-            NumOfWheels = numOfWheels;
+            _color = color;
+            _numOfWheels = numOfWheels;
+        }
+
+        public Vehicle()
+        {
         }
     }
 }
