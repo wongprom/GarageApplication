@@ -13,8 +13,6 @@ namespace GarageApplication.Classes.Baseclass
         public string Color { get; set; }
         public int NumOfWheels { get; set; }
 
-        //Todo random regnum generator
-        //Todo have 5 colors, random pick color
         public Vehicle(string regNum = "abc123", string color = "white", int numOfWheels = 4)
         {
             RegNum = regNum;
