@@ -54,6 +54,28 @@ namespace GarageApplication.GarageApplication.Helpers
             return answer;
         }
 
+        public static string AskForLettersOnly(string prompt)
+        {
+            string answer;
+
+            do
+            {
+                answer = AskForString(prompt);
+
+                if (answer.Any(char.IsDigit))
+                {
+                    Console.WriteLine("Invalid input: Color cannot contain numbers.");
+                }
+                else
+                {
+                    break;
+                }
+
+            } while (true);
+
+            return answer;
+        }
+
         public static uint AskForUInt(string prompt)
         {
             do
