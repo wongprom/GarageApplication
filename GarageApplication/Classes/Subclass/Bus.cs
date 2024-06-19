@@ -10,9 +10,9 @@ namespace GarageApplication.Classes.Subclass
 {
     internal class Bus : Vehicle
     {
-        public int NumOfSeats { get; set; }
+        public uint NumOfSeats { get; set; }
 
-        public Bus(string regNum, string color, uint numOfWheels, int numOfSeats) : base(regNum, color, numOfWheels)
+        public Bus(string regNum, string color, uint numOfWheels, uint numOfSeats) : base(regNum, color, numOfWheels)
         {
             NumOfSeats = numOfSeats;
         }

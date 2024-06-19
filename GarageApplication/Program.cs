@@ -166,9 +166,8 @@ namespace GarageApplication
                     vehicle = new Airplane(regNumber, color, numOfWheels, numOfEngines);
                     break;
                 case '4':
-                    //Todo validate input, only numbers
-                    Console.WriteLine("Enter number of seats: ");
-                    int numOfSeats = int.Parse(Console.ReadLine()!);
+                    uint numOfSeats = Util.AskForUInt("Enter number of seats:");
+                    Console.WriteLine($"Number of seats: {numOfSeats}");
                     vehicle = new Bus(regNumber, color, numOfWheels, numOfSeats);
                     break; 
                 case '5':
