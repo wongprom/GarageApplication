@@ -152,14 +152,12 @@ namespace GarageApplication
                       + "\n1. Gasoline"
                       + "\n2. Diesel");
                     FuelType fuelType = (FuelType)Convert.ToInt32(fuel);
-                    
                     Console.WriteLine($"You choose {fuelType} as fuel type.");
                     vehicle = new Car(regNumber, color, numOfWheels, fuelType);
                     break;
                 case '2':
-                    //Todo validate input, only numbers
-                    Console.WriteLine("Enter cylinder Volume: ");
-                    int cylinderVolume = int.Parse(Console.ReadLine()!);
+                    uint cylinderVolume = Util.AskForUInt("Enter cylinder Volume:");
+                    Console.WriteLine($"Your cylinder volum is {cylinderVolume}.");
                     vehicle = new Motorcycle(regNumber, color, numOfWheels, cylinderVolume);
                     break;
                 case '3':

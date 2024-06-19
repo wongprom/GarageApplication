@@ -10,8 +10,8 @@ namespace GarageApplication.Classes.Subclass
 {
     internal class Motorcycle : Vehicle
     {
-        public int CylinderVolume { get; set; }
-        public Motorcycle(string regNum, string color, uint numOfWheels, int cylinderVolume) : base(regNum, color, numOfWheels)
+        public uint CylinderVolume { get; set; }
+        public Motorcycle(string regNum, string color, uint numOfWheels, uint cylinderVolume) : base(regNum, color, numOfWheels)
         {
             CylinderVolume = cylinderVolume;
         }
