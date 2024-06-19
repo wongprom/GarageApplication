@@ -1,6 +1,7 @@
 ﻿using GarageApplication.Classes.Baseclass;
 using GarageApplication.Classes.Subclass;
 using GarageApplication.Handlers;
+using GarageApplication.GarageApplication.Helpers;
 using System.Text;
 using static GarageApplication.Classes.Subclass.Car;
 
@@ -10,12 +11,12 @@ namespace GarageApplication
     {
         static void Main(string[] args)
         {
-            int numOfLotsInput = new int();
+            uint numOfLotsInput = new int();
             bool isValidInput = false;
             while (!isValidInput) 
-            { 
-                Console.Write("How many lots do you want in your garage? (Minimum 4 lots): ");
-                numOfLotsInput = int.Parse(Console.ReadLine()!);
+            {
+                string prompt = "How many lots do you want in your garage? (Minimum 4 lots): ";
+                numOfLotsInput = Util.AskForUInt(prompt);
 
                 if (numOfLotsInput >= 4)
                 {
@@ -80,10 +81,10 @@ namespace GarageApplication
                         Console.Clear();
                         List<Vehicle> inintVehicles = new List<Vehicle>
                         {
-                            new Car(regNum:GenerateRandomRegNum(), color:"Red", numOfWheels:4, FuelType.Gasoline),
-                            new Car(regNum:GenerateRandomRegNum(), color:"Green", numOfWheels:4, FuelType.Diesel),
-                            new Motorcycle(regNum:GenerateRandomRegNum(), color:"Black", numOfWheels:2, 250),
-                            new Boat(regNum:GenerateRandomRegNum(), color:"Green", numOfWheels:0, 190),
+                            new Car(regNum:Util.GenerateRandomRegNum(), color:"Red", numOfWheels:4, FuelType.Gasoline),
+                            new Car(regNum:Util.GenerateRandomRegNum(), color:"Green", numOfWheels:4, FuelType.Diesel),
+                            new Motorcycle(regNum:Util.GenerateRandomRegNum(), color:"Black", numOfWheels:2, 250),
+                            new Boat(regNum:Util.GenerateRandomRegNum(), color:"Green", numOfWheels:0, 190),
                         };
                         foreach (Vehicle vehicle in inintVehicles)
                         {
@@ -105,26 +106,7 @@ namespace GarageApplication
             }
         }
 
-        public static string GenerateRandomRegNum()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const string digits = "0123456789";
-
-            StringBuilder regNum = new StringBuilder();
-            Random random = new Random();
-
-            for (int i = 0; i < 3; i++)
-            {
-                regNum.Append(chars[random.Next(chars.Length)]);
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                regNum.Append(digits[random.Next(digits.Length)]);
-            }
-
-            return regNum.ToString();
-        }
+       
 
         static void ParkVehicle(GarageHandler garageHandler)
         {

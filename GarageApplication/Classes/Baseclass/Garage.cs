@@ -12,7 +12,7 @@ namespace GarageApplication.Classes.Baseclass
         private T?[] _vehicles;
         public int NumOfParkingLots { get; set; }
 
-        public Garage(int numOfParkingLots)
+        public Garage(uint numOfParkingLots)
         {
             _vehicles = new T[numOfParkingLots];
             Console.Clear();

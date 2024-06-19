@@ -11,7 +11,7 @@ namespace GarageApplication.Handlers
     {
         private Garage<Vehicle> _garage;
 
-        public GarageHandler(int numOfLotsInput)
+        public GarageHandler(uint numOfLotsInput)
         {
             _garage = new Garage<Vehicle>(numOfLotsInput);
         }
