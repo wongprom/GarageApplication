@@ -103,12 +103,6 @@ namespace GarageApplication.GarageApplication.Helpers
                     Console.WriteLine("Invalid input: Registration number must be exactly 6 characters long.");
                     continue;
 ;               }
-                
-                if(answer.Length != 6)
-                {
-                    Console.WriteLine("Less then 6 char");
-                   continue;
-;               }
 
                 string letters = answer.Substring(0, 3);
                 string digits = answer.Substring(3);
