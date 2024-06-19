@@ -35,7 +35,7 @@ namespace GarageApplication
             bool isContinue = true;
             while (isContinue)
             {
-                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 4, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 4, 5, 6, 0) of your choice"
                         + "\n1. Park Vehicle"
                         + "\n2. Remove Vehicle"
                         + "\n3. Info Vehicles"
