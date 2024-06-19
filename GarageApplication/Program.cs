@@ -35,7 +35,7 @@ namespace GarageApplication
             bool isContinue = true;
             while (isContinue)
             {
-                Console.WriteLine("Please navigate through the menu by entering the number (1, 2, 3, 4, 5, 6, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by entering the number (0 - 6) of your choice"
                         + "\n1. Park Vehicle"
                         + "\n2. Remove Vehicle"
                         + "\n3. Info Vehicles"
@@ -99,7 +99,7 @@ namespace GarageApplication
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3)");
+                        Console.WriteLine("Please valid input (0, 1, 2, 3, 4, 5, 6.)");
                         Console.ResetColor();
                         break;
                 }
@@ -145,18 +145,15 @@ namespace GarageApplication
 
             Vehicle vehicle = new Vehicle();
 
-            
-
             switch (inputVehicle)
             {
                 case '1':
-                    Console.WriteLine("Enter type of fuel for your car: "
+                   string fuel= Util.AskForFuelType("Enter type of fuel for your car: "
                       + "\n1. Gasoline"
                       + "\n2. Diesel");
-                    string fuel = Console.ReadLine()!;
-                    //Todo validate input, only 1 or 2 as ligit value
                     FuelType fuelType = (FuelType)Convert.ToInt32(fuel);
-                    Console.WriteLine(fuelType);
+                    
+                    Console.WriteLine($"You choose {fuelType} as fuel type.");
                     vehicle = new Car(regNumber, color, numOfWheels, fuelType);
                     break;
                 case '2':

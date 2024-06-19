@@ -124,5 +124,27 @@ namespace GarageApplication.GarageApplication.Helpers
             }
 
         }
+
+        public static string AskForFuelType(string prompt)
+        {
+            string answer;
+
+            while (true)
+            {
+                answer = AskForString(prompt);
+
+                if (answer != "1" && answer != "2")
+                {
+                    Console.WriteLine("Invalid input, choose 1 or 2.");
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    return answer.ToString();
+                }
+            }
+
+        }
     }
 }
