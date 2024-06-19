@@ -10,8 +10,8 @@ namespace GarageApplication.Classes.Subclass
 {
     internal class Airplane : Vehicle
     {
-        public int NumOfEngines { get; set; }
-        public Airplane(string regNum, string color, uint numOfWheels, int numOfEngines) : base(regNum, color, numOfWheels)
+        public uint NumOfEngines { get; set; }
+        public Airplane(string regNum, string color, uint numOfWheels, uint numOfEngines) : base(regNum, color, numOfWheels)
         {
             NumOfEngines = numOfEngines;
         }
