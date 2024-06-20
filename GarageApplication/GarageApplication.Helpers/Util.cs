@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarageApplication.Handlers;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -91,10 +92,10 @@ namespace GarageApplication.GarageApplication.Helpers
             } while (true);
         }
 
-        public static string AskForRegNum(string prompt)
+        public static string AskForRegNum(string prompt, GarageHandler? garageHandler = null)
         { 
             string answer;
-
+          
             while (true) 
             {
                 answer = AskForString(prompt);
@@ -103,7 +104,7 @@ namespace GarageApplication.GarageApplication.Helpers
                 {
                     Console.WriteLine("Invalid input: Registration number must be exactly 6 characters long.");
                     continue;
-;               }
+               }
 
                 string letters = answer.Substring(0, 3);
                 string digits = answer.Substring(3);
@@ -118,6 +119,12 @@ namespace GarageApplication.GarageApplication.Helpers
                 if (!digits.All(char.IsDigit))
                 {
                     Console.WriteLine("Invalid input: Last 3 characters must be digits.");
+                    continue;
+                }
+
+                if (garageHandler != null && garageHandler.GetVehicleByRegNum(answer) != null)
+                {
+                    Console.WriteLine("This registration number is already in use. Please enter a different one.");
                     continue;
                 }
                 return answer;

@@ -137,7 +137,7 @@ namespace GarageApplication
                 }
             }
 
-            string regNumber = Util.AskForRegNum("Enter registration number, ex abc123:");
+            string regNumber = Util.AskForRegNum("Enter registration number, ex abc123:", garageHandler);
 
             string color = Util.AskForLettersOnly("Enter color:");
 

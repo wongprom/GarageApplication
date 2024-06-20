@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GarageApplication.Handlers
 {
-    internal class GarageHandler
+    public class GarageHandler
     {
         private Garage<Vehicle> _garage;
 
@@ -15,7 +15,7 @@ namespace GarageApplication.Handlers
         {
             _garage = new Garage<Vehicle>(numOfLotsInput);
         }
-
+    
         public bool ParkVehicle(Vehicle vehicle)
         {
             return _garage.Park(vehicle);
