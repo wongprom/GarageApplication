@@ -60,5 +60,27 @@ namespace GarageApplication.Test
             Assert.False(actualResult);
         }
 
+        [Fact]
+        public void Remove_VehicleFromGarage_ShouldReturnTrue()
+        {
+            // Arrange
+            var garage = new Garage<Vehicle>(4);
+            var car = new Car("ABC123", "Red", 4, Car.FuelType.Gasoline);
+            var motorcycle = new Motorcycle("QWE123", "Blue", 2, 250);
+            var bus = new Bus("ASD456", "Red", 4, 6);
+            var airplane = new Airplane("ZXC789", "Blue", 2, 2);
+
+            garage.Park(car);
+            garage.Park(motorcycle);
+            garage.Park(bus);
+            garage.Park(airplane);
+
+            // Act
+            var actualResult = garage.Remove("ABC123");
+
+            // Assert
+            Assert.True(actualResult);
+        }
+
     }
 }
