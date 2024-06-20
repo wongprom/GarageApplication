@@ -2,20 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+[assembly: InternalsVisibleTo("GarageApplication.Test")]
 
 namespace GarageApplication.Classes.Baseclass
 {
     internal class Garage<T> : IEnumerable<T>  where T : Vehicle
     {
         private T?[] _vehicles;
-        public int NumOfParkingLots { get; set; }
+        public int NumOfParkingLots { get; private set; }
 
         public Garage(uint numOfParkingLots)
         {
             _vehicles = new T[numOfParkingLots];
-            Console.Clear();
+            OnGarageCreated(numOfParkingLots);
+            NumOfParkingLots = (int)numOfParkingLots;
+        }
+
+        protected void OnGarageCreated(uint numOfParkingLots)
+        {
+            //Console.Clear();
             Console.WriteLine($"You now have a garage with {numOfParkingLots} lots!");
         }
 
@@ -47,7 +55,7 @@ namespace GarageApplication.Classes.Baseclass
         {
             foreach (var vehicle in _vehicles)
             {
-                if(vehicle?.RegNum.ToLower() == regNum.ToLower())
+                if(vehicle?.RegNum?.ToLower() == regNum.ToLower())
                 {
                     return vehicle;
                 }
