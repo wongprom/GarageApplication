@@ -12,14 +12,17 @@ namespace GarageApplication.Classes.Baseclass
     internal class Garage<T> : IEnumerable<T>  where T : Vehicle
     {
         private T?[] _vehicles;
-        public int NumOfParkingLots { get; private set; }
+        private int _currentParkedVehicles;
+        private int _numOfParkingLots;
 
         public Garage(uint numOfParkingLots)
         {
             _vehicles = new T[numOfParkingLots];
+            _numOfParkingLots = (int)numOfParkingLots;
             OnGarageCreated(numOfParkingLots);
-            NumOfParkingLots = (int)numOfParkingLots;
         }
+        public int NumberOfParkingLots => _numOfParkingLots;
+        public bool GarageIsFull => _currentParkedVehicles >= NumberOfParkingLots;
 
         protected void OnGarageCreated(uint numOfParkingLots)
         {
@@ -29,22 +32,22 @@ namespace GarageApplication.Classes.Baseclass
 
         public bool Park(T vehicle)
         {
-            if (NumOfParkingLots >= _vehicles.Length)
-            {
-                return false; // garage is full
-            }
-            _vehicles[NumOfParkingLots++] = vehicle;
+            if(GarageIsFull) return false;
+
+            int firstEmpty = System.Array.IndexOf(_vehicles, null);
+            _vehicles[firstEmpty] = vehicle;
+            _currentParkedVehicles++;
             return true; // Vehicle Parked
         }
 
         public bool Remove(string regNum) 
         {
-            for (int i = 0; i < NumOfParkingLots; i++)
+            for (int i = 0; i < _numOfParkingLots; i++)
             {
                 if (_vehicles?[i]!.RegNum == regNum)
                 {
-                    _vehicles[i] = _vehicles[--NumOfParkingLots];
-                    _vehicles[NumOfParkingLots] = null;
+                    _vehicles[i] = default(T);
+                    _currentParkedVehicles--;
                     return true;
                 }
             }

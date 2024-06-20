@@ -15,7 +15,7 @@ namespace GarageApplication.Test
             var garage = new Garage<Vehicle>(numOfParkingLots: expectedLots);
 
             //Assert
-            var actualNumOfParkingLots = garage.NumOfParkingLots;
+            var actualNumOfParkingLots = garage.NumberOfParkingLots;
             Assert.Equal((int)expectedLots, actualNumOfParkingLots);
         }
 
@@ -25,7 +25,7 @@ namespace GarageApplication.Test
             // Arrange
             uint expectedLots = 5;
             var garage = new Garage<Vehicle>(expectedLots);
-            var vehicle = new Car("ABC123", "Red", 4, Car.FuelType.Gasoline); 
+            var vehicle = new Car("ABC123", "Red", 4, Car.FuelType.Gasoline);
 
             // Act
             var result = garage.Park(vehicle);
