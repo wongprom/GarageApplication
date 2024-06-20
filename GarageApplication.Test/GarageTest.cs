@@ -47,6 +47,7 @@ namespace GarageApplication.Test
             var airplane = new Airplane("ZXC789", "Blue", 2, 2); 
             var boat = new Boat("LOK459", "Blue", 2, 2.9); 
 
+
             // Act: Park the first 4 vehicles
             garage.Park(car);
             garage.Park(motorcycle);
@@ -77,10 +78,33 @@ namespace GarageApplication.Test
 
             // Act
             var actualResult = garage.Remove("ABC123");
-
+            
             // Assert
             Assert.True(actualResult);
         }
 
+        [Fact]
+        public void GetVehicleByRegNum_ShouldReturnVehicle()
+        {
+            // Arrange
+            var garage = new Garage<Vehicle>(4);
+            var car = new Car("ABC123", "Red", 4, Car.FuelType.Gasoline);
+            var motorcycle = new Motorcycle("QWE123", "Blue", 2, 250);
+            var bus = new Bus("ASD456", "Red", 4, 6);
+            var airplane = new Airplane("ZXC789", "Blue", 2, 2);
+
+            garage.Park(car);
+            garage.Park(motorcycle);
+            garage.Park(bus);
+            garage.Park(airplane);
+
+            // Act
+            var actualResult = garage.GetVehicleByRegNum("ABC123");
+            var expectedResult = car;
+
+            // Assert
+            Assert.Equal(expectedResult, actualResult);
+        }
+        
     }
 }
