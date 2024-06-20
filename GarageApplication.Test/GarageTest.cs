@@ -84,7 +84,7 @@ namespace GarageApplication.Test
         }
 
         [Fact]
-        public void GetVehicleByRegNum_ShouldReturnVehicle()
+        public void GetVehicleByRegNum_IfRegNumExist_ShouldReturnVehicle()
         {
             // Arrange
             var garage = new Garage<Vehicle>(4);
